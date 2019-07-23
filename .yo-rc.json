@@ -1,0 +1,37 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.jhipster.cesium"
+    },
+    "jhipsterVersion": "6.1.2",
+    "applicationType": "monolith",
+    "baseName": "jhipsterCesium",
+    "packageName": "com.jhipster.cesium",
+    "packageFolder": "com/jhipster/cesium",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": false,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "ZDVlMTkwZTBlZTU1NGQzMmUwNzBlMDRjNDQzYmNlZTJjOThjZmRiYWI0YTBhY2JhMjM0NTUyNmFjMzc5MzI1MzRiY2E2ZjVkOTk0NzkwM2U1MWU4MTgwZTJmNjhmYmJlYTljMTk5NzcwNWM2ZTc1YjY3OTRlNjdkZWU5MTZlZDM=",
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "testFrameworks": ["protractor"],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": false
+  }
+}
