@@ -26,7 +26,14 @@
         }
       },
       "prefix": "jhi",
-      "architect": {}
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "assets": [{ "glob": "**/*", "input": "./node_modules/cesium/Build/Cesium", "output": "./assets/cesium" }],
+          "styles": ["./node_modules/cesium/Build/Cesium/Widgets/widgets.css"],
+          "scripts": ["./node_modules/cesium/Build/Cesium/Cesium.js"]
+        }
+      }
     }
   },
   "defaultProject": "jhipster-cesium",
