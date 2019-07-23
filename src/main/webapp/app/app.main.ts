@@ -9,7 +9,7 @@ if (module['hot']) {
 }
 
 // window['CESIUM_BASE_URL'] = '/assets/cesium'; // If youre using Cesium version < 1.42.0 add this line
-// Cesium.buildModuleUrl.setBaseUrl('/assets/cesium/'); // If youre using Cesium version >= 1.42.0 add this line
+Cesium.buildModuleUrl.setBaseUrl('/assets/cesium/'); // If youre using Cesium version >= 1.42.0 add this line
 
 platformBrowserDynamic()
   .bootstrapModule(JhipsterCesiumAppModule, { preserveWhitespaces: true })
