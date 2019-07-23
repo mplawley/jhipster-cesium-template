@@ -37,8 +37,8 @@ import { AngularCesiumModule } from 'angular-cesium';
     JhipsterCesiumAccountModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
     JhipsterCesiumEntityModule,
-    JhipsterCesiumAppRoutingModule,
-    AngularCesiumModule.forRoot()
+    JhipsterCesiumAppRoutingModule
+    // AngularCesiumModule.forRoot()
   ],
   declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, FooterComponent],
   providers: [

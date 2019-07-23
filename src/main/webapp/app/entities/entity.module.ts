@@ -7,6 +7,10 @@ import { RouterModule } from '@angular/router';
       {
         path: 'ping',
         loadChildren: './ping/ping.module#JhipsterCesiumPingModule'
+      },
+      {
+        path: 'cesium-viewer',
+        loadChildren: './cesium-viewer/cesium-viewer.module#JhipsterCesiumCesiumViewerModule'
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])

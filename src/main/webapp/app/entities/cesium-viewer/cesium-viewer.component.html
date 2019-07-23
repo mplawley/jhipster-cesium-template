@@ -1,0 +1,25 @@
+<div>
+    <h2 id="page-heading">
+        <span>Cesium Viewers</span>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="cesiumViewers?.length === 0">
+        <span>No cesiumViewers found</span>
+    </div>
+
+    <ac-map>
+        <ac-layer acFor="let plane of planes$" [show]="showTracks" [context]="this">
+            <ac-billboard-desc props="{
+                    image: plane.image,
+                    position: plane.position
+                  }">
+            </ac-billboard-desc>
+            <ac-label-desc props="{
+                  position: plane.position,
+                  text: plane.name
+          }">
+            </ac-label-desc>
+        </ac-layer>
+    </ac-map>
+</div>
