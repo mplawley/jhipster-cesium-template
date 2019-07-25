@@ -47,8 +47,19 @@ module.exports = (options) => webpackMerge(commonConfig({ env: ENV }), {
     output: {
         path: utils.root('target/classes/static/'),
         filename: 'app/[name].bundle.js',
-        chunkFilename: 'app/[id].chunk.js'
-    },
+        chunkFilename: 'app/[id].chunk.js',
+
+        // Needed to compile multiline strings in Cesium
+        sourcePrefix: ''
+        },
+        amd: {
+            // Enable webpack-friendly use of require in Cesium
+            toUrlUndefined: true
+        },
+        node: {
+            // Resolve node module use of fs
+            fs: 'empty'
+        },
     module: {
         rules: [{
             test: /\.ts$/,

@@ -3,6 +3,12 @@ const { BaseHrefWebpackPlugin } = require('base-href-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const rxPaths = require('rxjs/_esm5/path-mapping');
+const cesiumSource = 'node_modules/cesium/Source';
+const cesiumWorkers = '../Build/Cesium/Workers';
+var Cesium = require('cesium/Build/Cesium/Cesium.js'); // Docs say var Cesium = require('cesium/Cesium');
+var viewer = new Cesium.Viewer('cesiumContainer');
+require('cesium/Build/Cesium/Widgets/widgets.css');
+
 
 const utils = require('./utils.js');
 
@@ -12,6 +18,8 @@ module.exports = (options) => ({
         modules: ['node_modules'],
         alias: {
             app: utils.root('src/main/webapp/app/'),
+            // CesiumJS module name
+            cesium: path.resolve(__dirname, cesiumSource),
             ...rxPaths()
         }
     },
@@ -48,6 +56,14 @@ module.exports = (options) => ({
                     name: 'manifest.webapp'
                 }
             },
+            {
+                test: /\.css$/,
+                use: [ 'style-loader', 'css-loader' ]
+            },
+            {
+                test: /\.(png|gif|jpg|jpeg|svg|xml|json)$/,
+                use: [ 'url-loader' ]
+            },
             // Ignore warnings about System.import in Angular
             { test: /[\/\\]@angular[\/\\].+\.js$/, parser: { system: true } },
         ]
@@ -64,7 +80,9 @@ module.exports = (options) => ({
                 // If you use an API server, in `prod` mode, you will need to enable CORS
                 // (see the `jhipster.cors` common JHipster property in the `application-*.yml` configurations)
                 SERVER_API_URL: `''`
-            }
+            },
+            // Define relative base path in cesium for loading assets
+            CESIUM_BASE_URL: JSON.stringify('')
         }),
         new CopyWebpackPlugin([
             { from: './node_modules/swagger-ui/dist/css', to: 'swagger-ui/dist/css' },
@@ -75,13 +93,19 @@ module.exports = (options) => ({
             { from: './src/main/webapp/favicon.ico', to: 'favicon.ico' },
             { from: './src/main/webapp/manifest.webapp', to: 'manifest.webapp' },
             // jhipster-needle-add-assets-to-webpack - JHipster will add/remove third-party resources in this array
-            { from: './src/main/webapp/robots.txt', to: 'robots.txt' }
+            { from: './src/main/webapp/robots.txt', to: 'robots.txt' },
+            { from: path.join(cesiumSource, cesiumWorkers), to: 'Workers' },
+            { from: path.join(cesiumSource, 'Assets'), to: 'Assets' },
+            { from: path.join(cesiumSource, 'Widgets'), to: 'Widgets' }
         ]),
         new HtmlWebpackPlugin({
             template: './src/main/webapp/index.html',
             chunks: ['polyfills', 'main', 'global'],
             chunksSortMode: 'manual',
             inject: 'body'
+        }),
+        new HtmlWebpackPlugin({
+            template: 'src/main/webapp/index.html'
         }),
         new BaseHrefWebpackPlugin({ baseHref: '/' })
     ]
