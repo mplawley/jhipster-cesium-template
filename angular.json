@@ -28,10 +28,7 @@
       "prefix": "jhi",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "assets": [{ "glob": "**/*", "input": "./node_modules/cesium/Build/Cesium", "output": "./assets/cesium" }],
-          "styles": ["./node_modules/cesium/Build/Cesium/Widgets/widgets.css"],
-          "scripts": ["./node_modules/cesium/Build/Cesium/Cesium.js"]
+          "builder": "@angular-devkit/build-angular:browser"
         }
       }
     }

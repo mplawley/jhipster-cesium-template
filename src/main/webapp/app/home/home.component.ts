@@ -3,6 +3,8 @@ import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
 
 import { LoginModalService, AccountService, Account } from 'app/core';
+import * as Cesium from 'cesium/Cesium';
+import 'cesium/Widgets/widgets.css';
 
 @Component({
   selector: 'jhi-home',
@@ -24,6 +26,8 @@ export class HomeComponent implements OnInit {
       this.account = account;
     });
     this.registerAuthenticationSuccess();
+
+    const viewer = new Cesium.Viewer('cesiumContainer');
   }
 
   registerAuthenticationSuccess() {
