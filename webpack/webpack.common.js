@@ -3,14 +3,11 @@ const { BaseHrefWebpackPlugin } = require('base-href-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const rxPaths = require('rxjs/_esm5/path-mapping');
-const cesiumSource = 'node_modules/cesium/Source';
+const cesiumSource = '../node_modules/cesium/Source';
 const cesiumWorkers = '../Build/Cesium/Workers';
-var Cesium = require('cesium/Build/Cesium/Cesium.js'); // Docs say var Cesium = require('cesium/Cesium');
-var viewer = new Cesium.Viewer('cesiumContainer');
-require('cesium/Build/Cesium/Widgets/widgets.css');
-
 
 const utils = require('./utils.js');
+const path = require('path');
 
 module.exports = (options) => ({
     resolve: {
